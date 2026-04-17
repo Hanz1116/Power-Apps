@@ -25,7 +25,9 @@ $ErrorActionPreference = "Stop"
 $listTitle = "VORRequests"
 
 Write-Host "Connecting to $SiteUrl ..." -ForegroundColor Cyan
-Connect-PnPOnline -Url $SiteUrl -Interactive
+# PnP.PowerShell 2.x removed plain -Interactive; -UseWebLogin opens a browser
+# sign-in window and works without a registered app registration.
+Connect-PnPOnline -Url $SiteUrl -UseWebLogin
 
 # ── Helper functions ─────────────────────────────────────────────────────────
 
