@@ -1,0 +1,11 @@
+{
+  "FormatVersion": "1.0",
+  "SaveFormat": "BackwardsCompatible",
+  "MSAppStructureVersion": "1.0.0",
+  "AppPreviewFlagsKey": [
+    "ExperimentalFormulas"
+  ],
+  "AppName": "VOR Requests",
+  "DocumentType": "App",
+  "ExtensionVersion": "2.2"
+}

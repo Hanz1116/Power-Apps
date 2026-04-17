@@ -1,0 +1,9 @@
+{
+  "ScreensWithUnlockedDesigns": [
+    "HomeScreen",
+    "NewRequestScreen",
+    "RequestDetailScreen",
+    "MyQueueScreen",
+    "AllRequestsScreen"
+  ]
+}

@@ -1,0 +1,184 @@
+Screens:
+  AllRequestsScreen As screen:
+    Properties:
+      Fill: =gColorSurface
+      # PASS 4 — All Requests with full filtering:
+      # date range, requestor, customer, urgency, status, reviewer, orderer.
+      # Includes Closed and Rejected.
+      # gClosedStatusFilter (set by nav "Closed" button) pre-selects status filter.
+
+    Children:
+
+    - hdr_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =0
+          Width: =App.Width
+          Height: =gHeaderHeight
+          Fill: =gColorPrimary
+          BorderThickness: =0
+
+    - hdr_AppTitle As label:
+        Properties:
+          X: =16
+          Y: =0
+          Width: =280
+          Height: =gHeaderHeight
+          Text: ="VOR Requests"
+          Color: =gColorWhite
+          Font: =gFontBase
+          Size: =20
+          FontWeight: =FontWeight.Bold
+          VerticalAlign: =VerticalAlign.Middle
+
+    - hdr_AvatarCircle As circle:
+        Properties:
+          X: =App.Width - 200
+          Y: =16
+          Width: =32
+          Height: =32
+          Fill: =gColorGold
+          BorderThickness: =0
+
+    - hdr_AvatarInitial As label:
+        Properties:
+          X: =App.Width - 200
+          Y: =16
+          Width: =32
+          Height: =32
+          Text: =Upper(Left(User().FullName, 1))
+          Color: =gColorWhite
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Bold
+          Align: =Align.Center
+          VerticalAlign: =VerticalAlign.Middle
+
+    - hdr_UserName As label:
+        Properties:
+          X: =App.Width - 360
+          Y: =0
+          Width: =152
+          Height: =gHeaderHeight
+          Text: =User().FullName
+          Color: =RGBA(220, 230, 245, 1)
+          Font: =gFontBase
+          Size: =13
+          VerticalAlign: =VerticalAlign.Middle
+          Align: =Align.Right
+
+    - nav_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =App.Height - gHeaderHeight
+          Fill: =gColorPrimaryDark
+          BorderThickness: =0
+
+    - nav_AllActiveBar As rectangle:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 144
+          Width: =4
+          Height: =48
+          Fill: =gColorGold
+
+    - nav_HomeBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Home"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+
+    - nav_NewRequestBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 48
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  New Request"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
+
+    - nav_MyQueueBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 96
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  My Queue"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
+
+    - nav_AllRequestsBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 144
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  All Requests"
+          Color: =gColorWhite
+          Fill: =RGBA(255, 255, 255, 0.12)
+          HoverFill: =RGBA(255, 255, 255, 0.18)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Semibold
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.None)
+
+    - nav_ClosedBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 192
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Closed"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: |-
+            =Set(gClosedStatusFilter, true);
+            Navigate(AllRequestsScreen, ScreenTransition.None)
+
+    - placeholder_Lbl As label:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 40
+          Width: =600
+          Height: =40
+          Text: ="All Requests — coming in Pass 4"
+          Color: =gColorTextMid
+          Font: =gFontBase
+          Size: =16
