@@ -1,0 +1,346 @@
+{
+  "version": "1.0",
+  "description": "Available Microsoft Power Apps Canvas App controls",
+  "categories": {
+    "Input": {
+      "description": "Controls for capturing user input",
+      "controls": [
+        {
+          "name": "Button",
+          "type": "Button",
+          "description": "A control the user can click or tap to interact with the app"
+        },
+        {
+          "name": "Text input",
+          "type": "TextInput",
+          "description": "A box in which the user can type text, numbers, and other data"
+        },
+        {
+          "name": "Drop down",
+          "type": "Dropdown",
+          "description": "A list that conserves screen space, especially when the list contains a large number of choices"
+        },
+        {
+          "name": "Combo box",
+          "type": "ComboBox",
+          "description": "A control that allows users to make selections from pre-defined choices, supports search and multi-select"
+        },
+        {
+          "name": "List box",
+          "type": "ListBox",
+          "description": "A list in which the user can select one or multiple items"
+        },
+        {
+          "name": "Check box",
+          "type": "CheckBox",
+          "description": "A control that the user can select or clear to indicate true or false"
+        },
+        {
+          "name": "Radio",
+          "type": "Radio",
+          "description": "An input control that shows multiple options, of which users can select only one at a time"
+        },
+        {
+          "name": "Toggle",
+          "type": "Toggle",
+          "description": "A control that the user can turn on or off by moving its handle"
+        },
+        {
+          "name": "Slider",
+          "type": "Slider",
+          "description": "A control with which the user can specify a value by dragging a handle"
+        },
+        {
+          "name": "Rating",
+          "type": "Rating",
+          "description": "A control in which the user can indicate a value between 1 and a maximum number that you specify"
+        },
+        {
+          "name": "Date picker",
+          "type": "DatePicker",
+          "description": "A control that the user can click or tap to specify a date"
+        },
+        {
+          "name": "Pen input",
+          "type": "PenInput",
+          "description": "A control in which the user can draw, erase, and highlight areas of an image"
+        },
+        {
+          "name": "Rich text editor",
+          "type": "RichTextEditor",
+          "description": "Allows end users to format text inside a WYSIWYG editing area"
+        },
+        {
+          "name": "Address input",
+          "type": "AddressInput",
+          "description": "An input control that provides address suggestions as the user types"
+        }
+      ]
+    },
+    "Display": {
+      "description": "Controls for displaying information",
+      "controls": [
+        {
+          "name": "Label",
+          "type": "Label",
+          "description": "A box that shows data such as text, numbers, dates, or currency"
+        },
+        {
+          "name": "HTML text",
+          "type": "HtmlViewer",
+          "description": "Shows HTML tags formatted as HTML in a Canvas app"
+        },
+        {
+          "name": "Image",
+          "type": "Image",
+          "description": "A control that shows an image from a local file or a data source"
+        },
+        {
+          "name": "Timer",
+          "type": "Timer",
+          "description": "A control that can determine how your app responds after a certain amount of time passes"
+        },
+        {
+          "name": "PDF viewer",
+          "type": "PdfViewer",
+          "description": "An experimental control that shows the content of a PDF file"
+        },
+        {
+          "name": "Power BI tile",
+          "type": "PowerBITile",
+          "description": "A control that shows a Power BI tile inside an app"
+        }
+      ]
+    },
+    "Layout": {
+      "description": "Controls for organizing and structuring app layout",
+      "controls": [
+        {
+          "name": "Gallery - Vertical",
+          "type": "Gallery",
+          "description": "A control that contains other controls and shows a set of data in vertical layout"
+        },
+        {
+          "name": "Gallery - Horizontal",
+          "type": "Gallery",
+          "description": "A control that contains other controls and shows a set of data in horizontal layout"
+        },
+        {
+          "name": "Gallery - Flexible height",
+          "type": "Gallery",
+          "description": "A vertical gallery with rows that adjust to content height"
+        },
+        {
+          "name": "Data table",
+          "type": "DataTable",
+          "description": "A control that shows data in a tabular format"
+        },
+        {
+          "name": "Edit form",
+          "type": "Form",
+          "description": "A control for editing or creating a record in a data source"
+        },
+        {
+          "name": "Display form",
+          "type": "Form",
+          "description": "A control for displaying (read-only) a record from a data source"
+        }
+      ]
+    },
+    "Media": {
+      "description": "Controls for media capture and playback",
+      "controls": [
+        {
+          "name": "Camera",
+          "type": "Camera",
+          "description": "A control with which the user can take photos by using the camera on the device"
+        },
+        {
+          "name": "Video",
+          "type": "Video",
+          "description": "A control that plays a video clip from a local file, a data source, or YouTube"
+        },
+        {
+          "name": "Audio",
+          "type": "Audio",
+          "description": "A control that plays a sound clip from a local file or a data source"
+        },
+        {
+          "name": "Barcode scanner",
+          "type": "BarcodeScanner",
+          "description": "A control that scans barcodes, QR codes, and data-matrix codes on Android and iOS devices"
+        },
+        {
+          "name": "Add picture",
+          "type": "AddMediaButton",
+          "description": "A control to load images from the local device"
+        },
+        {
+          "name": "Attachments",
+          "type": "Attachments",
+          "description": "A control that allows users to download files and upload or delete files from their device"
+        }
+      ]
+    },
+    "Charts": {
+      "description": "Controls for data visualization",
+      "controls": [
+        {
+          "name": "Column chart",
+          "type": "ColumnChart",
+          "description": "A control that shows data as vertical bars"
+        },
+        {
+          "name": "Line chart",
+          "type": "LineChart",
+          "description": "A control that shows data as a series of data points connected by lines"
+        },
+        {
+          "name": "Pie chart",
+          "type": "PieChart",
+          "description": "A control that shows relative values of up to five values as slices of a whole circle"
+        },
+        {
+          "name": "Bar chart",
+          "type": "BarChart",
+          "description": "A control that shows data as horizontal bars"
+        }
+      ]
+    },
+    "Shapes_and_Icons": {
+      "description": "Visual decorative and navigation controls",
+      "controls": [
+        {
+          "name": "Icon",
+          "type": "Icon",
+          "description": "Graphic icons including arrows, geometric shapes, actions, and symbols"
+        },
+        {
+          "name": "Rectangle",
+          "type": "Rectangle",
+          "description": "A shape used for visual elements and backgrounds"
+        },
+        {
+          "name": "Circle",
+          "type": "Circle",
+          "description": "A circle shape used for visual elements"
+        },
+        {
+          "name": "Triangle",
+          "type": "Triangle",
+          "description": "A triangle shape used for visual elements"
+        }
+      ]
+    },
+    "Map_and_Location": {
+      "description": "Controls for geographic and spatial data",
+      "controls": [
+        {
+          "name": "Map",
+          "type": "Map",
+          "description": "Displays a map with pins for locations using Bing Maps"
+        }
+      ]
+    },
+    "Modern_Controls": {
+      "description": "Modern Fluent UI-based controls (preview/GA)",
+      "controls": [
+        {
+          "name": "Button (modern)",
+          "type": "Button",
+          "description": "A Fluent UI styled button control"
+        },
+        {
+          "name": "Text (modern)",
+          "type": "Text",
+          "description": "A Fluent UI styled text label control"
+        },
+        {
+          "name": "Text input (modern)",
+          "type": "TextInput",
+          "description": "A Fluent UI styled text input control"
+        },
+        {
+          "name": "Dropdown (modern)",
+          "type": "Dropdown",
+          "description": "A Fluent UI styled dropdown control"
+        },
+        {
+          "name": "Checkbox (modern)",
+          "type": "Checkbox",
+          "description": "A Fluent UI styled checkbox control"
+        },
+        {
+          "name": "Toggle (modern)",
+          "type": "Toggle",
+          "description": "A Fluent UI styled toggle switch control"
+        },
+        {
+          "name": "Slider (modern)",
+          "type": "Slider",
+          "description": "A Fluent UI styled slider control"
+        },
+        {
+          "name": "Rating (modern)",
+          "type": "Rating",
+          "description": "A Fluent UI styled star-rating control"
+        },
+        {
+          "name": "Date picker (modern)",
+          "type": "DatePicker",
+          "description": "A Fluent UI styled date picker control"
+        },
+        {
+          "name": "Badge",
+          "type": "Badge",
+          "description": "A small status descriptor for UI elements"
+        },
+        {
+          "name": "Progress bar",
+          "type": "ProgressBar",
+          "description": "Shows progress toward completion of a task"
+        },
+        {
+          "name": "Spinner",
+          "type": "Spinner",
+          "description": "Indicates an ongoing process with an animated spinner"
+        },
+        {
+          "name": "Info button",
+          "type": "InfoButton",
+          "description": "Displays informational tooltip content when interacted with"
+        },
+        {
+          "name": "Link",
+          "type": "Link",
+          "description": "A Fluent UI styled hyperlink control"
+        },
+        {
+          "name": "Table (modern)",
+          "type": "Table",
+          "description": "A Fluent UI styled data table with sorting and selection"
+        },
+        {
+          "name": "Header",
+          "type": "Header",
+          "description": "A page header navigation control"
+        },
+        {
+          "name": "Nav",
+          "type": "Nav",
+          "description": "A left-hand navigation panel control"
+        },
+        {
+          "name": "Breadcrumb",
+          "type": "Breadcrumb",
+          "description": "Shows navigational hierarchy breadcrumb trail"
+        },
+        {
+          "name": "Tabs",
+          "type": "Tabs",
+          "description": "A tabbed navigation control"
+        }
+      ]
+    }
+  }
+}
