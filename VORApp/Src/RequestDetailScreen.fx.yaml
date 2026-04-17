@@ -1,0 +1,177 @@
+Screens:
+  RequestDetailScreen As screen:
+    Properties:
+      Fill: =gColorSurface
+      # PASS 2 — Read-only detail view
+      # PASS 3 — Contextual action panel (reviewer sign-off, orderer PO, dispatch, close, resubmit)
+
+    Children:
+
+    # ── Header ────────────────────────────────────────────────────────────────
+    - hdr_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =0
+          Width: =App.Width
+          Height: =gHeaderHeight
+          Fill: =gColorPrimary
+          BorderThickness: =0
+
+    - hdr_AppTitle As label:
+        Properties:
+          X: =16
+          Y: =0
+          Width: =280
+          Height: =gHeaderHeight
+          Text: ="VOR Requests"
+          Color: =gColorWhite
+          Font: =gFontBase
+          Size: =20
+          FontWeight: =FontWeight.Bold
+          VerticalAlign: =VerticalAlign.Middle
+
+    - hdr_BackBtn As button:
+        Properties:
+          X: =App.Width - 120
+          Y: =14
+          Width: =104
+          Height: =36
+          Text: ="← Back"
+          Color: =gColorWhite
+          Fill: =RGBA(255, 255, 255, 0.2)
+          HoverFill: =RGBA(255, 255, 255, 0.3)
+          PressedFill: =RGBA(255, 255, 255, 0.1)
+          BorderThickness: =1
+          BorderColor: =RGBA(255, 255, 255, 0.5)
+          Font: =gFontBase
+          Size: =13
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+          OnSelect: =Back()
+
+    # ── Nav Rail ──────────────────────────────────────────────────────────────
+    - nav_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =App.Height - gHeaderHeight
+          Fill: =gColorPrimaryDark
+          BorderThickness: =0
+
+    - nav_HomeBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Home"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+
+    - nav_NewRequestBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 48
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  New Request"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
+
+    - nav_MyQueueBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 96
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  My Queue"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
+
+    - nav_AllRequestsBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 144
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  All Requests"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
+
+    - nav_ClosedBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 192
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Closed"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: |-
+            =Set(gClosedStatusFilter, true);
+            Navigate(AllRequestsScreen, ScreenTransition.Fade)
+
+    # ── Placeholder content (Pass 2 will replace this) ───────────────────────
+    - placeholder_Lbl As label:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 40
+          Width: =600
+          Height: =40
+          Text: ="Request Detail — coming in Pass 2"
+          Color: =gColorTextMid
+          Font: =gFontBase
+          Size: =16
+
+    - placeholder_SubLbl As label:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 88
+          Width: =600
+          Height: =24
+          Text: ="Selected request: " & If(IsBlank(gSelectedRequest), "none", gSelectedRequest.Title)
+          Color: =gColorTextMid
+          Font: =gFontBase
+          Size: =14

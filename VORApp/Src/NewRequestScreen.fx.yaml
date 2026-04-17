@@ -1,0 +1,820 @@
+Screens:
+  NewRequestScreen As screen:
+    Properties:
+      Fill: =gColorSurface
+      OnVisible: |-
+        =Set(gSubmitAttempted, false);
+        Set(gNotificationVisible, false)
+
+    Children:
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # TOP HEADER  (shared layout with HomeScreen)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - hdr_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =0
+          Width: =App.Width
+          Height: =gHeaderHeight
+          Fill: =gColorPrimary
+          BorderThickness: =0
+
+    - hdr_AppTitle As label:
+        Properties:
+          X: =16
+          Y: =0
+          Width: =280
+          Height: =gHeaderHeight
+          Text: ="VOR Requests"
+          Color: =gColorWhite
+          Font: =gFontBase
+          Size: =20
+          FontWeight: =FontWeight.Bold
+          VerticalAlign: =VerticalAlign.Middle
+
+    - hdr_AvatarCircle As circle:
+        Properties:
+          X: =App.Width - 200
+          Y: =16
+          Width: =32
+          Height: =32
+          Fill: =gColorGold
+          BorderThickness: =0
+
+    - hdr_AvatarInitial As label:
+        Properties:
+          X: =App.Width - 200
+          Y: =16
+          Width: =32
+          Height: =32
+          Text: =Upper(Left(User().FullName, 1))
+          Color: =gColorWhite
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Bold
+          Align: =Align.Center
+          VerticalAlign: =VerticalAlign.Middle
+
+    - hdr_UserName As label:
+        Properties:
+          X: =App.Width - 360
+          Y: =0
+          Width: =152
+          Height: =gHeaderHeight
+          Text: =User().FullName
+          Color: =RGBA(220, 230, 245, 1)
+          Font: =gFontBase
+          Size: =13
+          VerticalAlign: =VerticalAlign.Middle
+          Align: =Align.Right
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # LEFT NAVIGATION RAIL
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - nav_Bg As rectangle:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =App.Height - gHeaderHeight
+          Fill: =gColorPrimaryDark
+          BorderThickness: =0
+
+    # Active indicator bar for "New Request" item
+    - nav_NewActiveBar As rectangle:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 48
+          Width: =4
+          Height: =48
+          Fill: =gColorGold
+
+    - nav_HomeBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Home"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+
+    - nav_NewRequestBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 48
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  New Request"
+          Color: =gColorWhite
+          Fill: =RGBA(255, 255, 255, 0.12)
+          HoverFill: =RGBA(255, 255, 255, 0.18)
+          PressedFill: =RGBA(255, 255, 255, 0.08)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Semibold
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(NewRequestScreen, ScreenTransition.None)
+
+    - nav_MyQueueBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 96
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  My Queue"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
+
+    - nav_AllRequestsBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 144
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  All Requests"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
+
+    - nav_ClosedBtn As button:
+        Properties:
+          X: =0
+          Y: =gHeaderHeight + 192
+          Width: =gNavWidth
+          Height: =48
+          Text: ="  Closed"
+          Color: =RGBA(200, 215, 235, 1)
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(255, 255, 255, 0.1)
+          PressedFill: =RGBA(255, 255, 255, 0.05)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          Align: =Align.Left
+          PaddingLeft: =20
+          OnSelect: |-
+            =Set(gClosedStatusFilter, true);
+            Navigate(AllRequestsScreen, ScreenTransition.Fade)
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FORM SCROLL CONTAINER  (200, 64) → (App.Width, App.Height)
+    # The form is placed in a vertical gallery (single item) to enable scrolling
+    # on iPad portrait when the keyboard is open.  Alternatively this could be
+    # a scrollable screen — set OnSelect of the screen to allow scroll.
+    # For simplicity in Pass 1 the form is a flat list of controls; use a
+    # scrollable container if the screen height is < 900.
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - form_OuterBg As rectangle:
+        Properties:
+          X: =gContentX
+          Y: =gContentY
+          Width: =App.Width - gContentX
+          Height: =App.Height - gContentY
+          Fill: =gColorSurface
+          BorderThickness: =0
+
+    # ── Page title + breadcrumb ───────────────────────────────────────────────
+
+    - form_Breadcrumb As label:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 20
+          Width: =500
+          Height: =20
+          Text: ="Home  ›  New VOR Request"
+          Color: =gColorTextMid
+          Font: =gFontBase
+          Size: =12
+
+    - form_PageTitle As label:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 44
+          Width: =500
+          Height: =32
+          Text: ="New VOR Request"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =22
+          FontWeight: =FontWeight.Bold
+
+    # ── Card background ───────────────────────────────────────────────────────
+
+    - form_CardBg As rectangle:
+        Properties:
+          X: =gContentX + 32
+          Y: =gContentY + 88
+          Width: =Min(App.Width - gContentX - 64, 720)
+          Height: =720
+          Fill: =gColorWhite
+          RadiusTopLeft: =8
+          RadiusTopRight: =8
+          RadiusBottomLeft: =8
+          RadiusBottomRight: =8
+          BorderThickness: =1
+          BorderColor: =gColorBorder
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # Convenience variable: form card left edge, used for all field X positions
+    # formX = gContentX + 48  (card left + 16px inner padding)
+    # formW = Min(App.Width - gContentX - 64, 720) - 32  (card width - 32px padding)
+    # ─────────────────────────────────────────────────────────────────────────
+
+    # ── Field 1: Submitted on Behalf Of ──────────────────────────────────────
+
+    - f1_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 108
+          Width: =300
+          Height: =18
+          Text: ="Submitted on behalf of *"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f1_InfoBtn As label:
+        Properties:
+          X: =gContentX + 48 + 200
+          Y: =gContentY + 108
+          Width: =16
+          Height: =16
+          Text: ="ⓘ"
+          Color: =gColorPrimary
+          Font: =gFontBase
+          Size: =13
+          Tooltip: ="Choosing 'Customer' routes the dispatch email to the customer contact instead of the workshop."
+
+    - f1_Radio As radio:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 128
+          Width: =320
+          Height: =32
+          Items: =["Workshop (self)", "Customer"]
+          Default: ="Workshop (self)"
+          Layout: =Layout.Horizontal
+          Font: =gFontBase
+          Size: =13
+          Color: =gColorTextDark
+          RadioSize: =16
+          RadioBackgroundFill: =gColorWhite
+          RadioSelectionFill: =gColorPrimary
+
+    # ── Field 2: Customer Name (conditional — visible only when Customer) ─────
+
+    - f2_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 170
+          Width: =300
+          Height: =18
+          Text: ="Customer name *"
+          Color: =If(gSubmitAttempted && f1_Radio.Selected.Value = "Customer" && IsBlank(f2_TI.Text), gColorError, gColorTextDark)
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+          Visible: =f1_Radio.Selected.Value = "Customer"
+
+    - f2_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 190
+          Width: =Min(App.Width - gContentX - 64, 720) - 32
+          Height: =36
+          HintText: ="Customer or company name"
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =If(gSubmitAttempted && IsBlank(f2_TI.Text), gColorError, gColorBorder)
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+          Visible: =f1_Radio.Selected.Value = "Customer"
+
+    - f2_ErrLbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 228
+          Width: =300
+          Height: =16
+          Text: ="Customer name is required"
+          Color: =gColorError
+          Font: =gFontBase
+          Size: =11
+          Visible: =gSubmitAttempted && f1_Radio.Selected.Value = "Customer" && IsBlank(f2_TI.Text)
+
+    # ── Field 3: Vehicle Identifier Type ─────────────────────────────────────
+    # Y offset below field 2: if Customer mode adds ~88px; we use a dynamic Y
+    # In practice, use a container/group to handle conditional layout.
+    # For Pass 1, both field 2 and field 3 are positioned at fixed Y; field 2
+    # is hidden/shown without re-flowing (the form scrolls to accommodate).
+
+    - f3_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 252
+          Width: =300
+          Height: =18
+          Text: ="Vehicle identifier type *"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f3_Radio As radio:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 272
+          Width: =240
+          Height: =32
+          Items: =["VIN", "Stock#"]
+          Default: ="VIN"
+          Layout: =Layout.Horizontal
+          Font: =gFontBase
+          Size: =13
+          Color: =gColorTextDark
+          RadioSize: =16
+          RadioBackgroundFill: =gColorWhite
+          RadioSelectionFill: =gColorPrimary
+
+    # ── Field 4: Vehicle Identifier (label changes with type) ─────────────────
+
+    - f4_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 316
+          Width: =300
+          Height: =18
+          Text: =If(f3_Radio.Selected.Value = "VIN", "VIN *", "Stock# *")
+          Color: =If(gSubmitAttempted && IsBlank(f4_TI.Text), gColorError, gColorTextDark)
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f4_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 336
+          Width: =Min(App.Width - gContentX - 64, 720) - 32
+          Height: =36
+          HintText: =If(f3_Radio.Selected.Value = "VIN", "Enter full VIN (17 characters)", "Enter Stock# (e.g. BCI-1234)")
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =If(gSubmitAttempted && IsBlank(f4_TI.Text), gColorError, gColorBorder)
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f4_ErrLbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 374
+          Width: =300
+          Height: =16
+          Text: =If(f3_Radio.Selected.Value = "VIN", "VIN is required", "Stock# is required")
+          Color: =gColorError
+          Font: =gFontBase
+          Size: =11
+          Visible: =gSubmitAttempted && IsBlank(f4_TI.Text)
+
+    # ── Field 5: Fault Description ────────────────────────────────────────────
+
+    - f5_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 398
+          Width: =300
+          Height: =18
+          Text: ="Fault description *"
+          Color: =If(gSubmitAttempted && IsBlank(f5_TI.Text), gColorError, gColorTextDark)
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f5_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 418
+          Width: =Min(App.Width - gContentX - 64, 720) - 32
+          Height: =72
+          HintText: ="Describe the fault or reason the vehicle is off road…"
+          Mode: =TextMode.MultiLine
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =If(gSubmitAttempted && IsBlank(f5_TI.Text), gColorError, gColorBorder)
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f5_ErrLbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 492
+          Width: =300
+          Height: =16
+          Text: ="Fault description is required"
+          Color: =gColorError
+          Font: =gFontBase
+          Size: =11
+          Visible: =gSubmitAttempted && IsBlank(f5_TI.Text)
+
+    # ── Field 6 & 7: Part Name and Part Number (side-by-side) ────────────────
+
+    - f6_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 516
+          Width: =220
+          Height: =18
+          Text: ="Part name *"
+          Color: =If(gSubmitAttempted && IsBlank(f6_TI.Text), gColorError, gColorTextDark)
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f7_Lbl As label:
+        Properties:
+          X: =gContentX + 48 + 240
+          Y: =gContentY + 516
+          Width: =220
+          Height: =18
+          Text: ="Part number (optional)"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f6_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 536
+          Width: =228
+          Height: =36
+          HintText: ="e.g. Air filter, clutch plate"
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =If(gSubmitAttempted && IsBlank(f6_TI.Text), gColorError, gColorBorder)
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f7_TI As textInput:
+        Properties:
+          X: =gContentX + 48 + 240
+          Y: =gContentY + 536
+          Width: =Min(App.Width - gContentX - 64, 720) - 32 - 240
+          Height: =36
+          HintText: ="e.g. SITRAK-AF-1042 (if known)"
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =gColorBorder
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f6_ErrLbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 574
+          Width: =228
+          Height: =16
+          Text: ="Part name is required"
+          Color: =gColorError
+          Font: =gFontBase
+          Size: =11
+          Visible: =gSubmitAttempted && IsBlank(f6_TI.Text)
+
+    # ── Field 8 & 9: Quantity and Urgency (side-by-side) ─────────────────────
+
+    - f8_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 598
+          Width: =120
+          Height: =18
+          Text: ="Quantity *"
+          Color: =If(gSubmitAttempted && (IsBlank(f8_TI.Text) || Not(IsNumeric(f8_TI.Text)) || Value(f8_TI.Text) < 1), gColorError, gColorTextDark)
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f9_Lbl As label:
+        Properties:
+          X: =gContentX + 48 + 152
+          Y: =gContentY + 598
+          Width: =300
+          Height: =18
+          Text: ="Urgency *"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f8_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 618
+          Width: =140
+          Height: =36
+          Default: ="1"
+          HintText: ="1"
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =If(
+            gSubmitAttempted && (IsBlank(f8_TI.Text) || Not(IsNumeric(f8_TI.Text)) || Value(f8_TI.Text) < 1),
+            gColorError,
+            gColorBorder
+          )
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f8_ErrLbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 656
+          Width: =140
+          Height: =16
+          Text: ="Must be ≥ 1"
+          Color: =gColorError
+          Font: =gFontBase
+          Size: =11
+          Visible: =gSubmitAttempted && (IsBlank(f8_TI.Text) || Not(IsNumeric(f8_TI.Text)) || Value(f8_TI.Text) < 1)
+
+    - f9_Radio As radio:
+        Properties:
+          X: =gContentX + 48 + 152
+          Y: =gContentY + 614
+          Width: =360
+          Height: =40
+          Items: =["Safety critical", "Operational", "Scheduled"]
+          Default: ="Operational"
+          Layout: =Layout.Horizontal
+          Font: =gFontBase
+          Size: =13
+          Color: =gColorTextDark
+          RadioSize: =16
+          RadioBackgroundFill: =gColorWhite
+          RadioSelectionFill: =Switch(
+            f9_Radio.Selected.Value,
+            "Safety critical", gColorUrgencySafety,
+            "Operational", gColorUrgencyOperational,
+            "Scheduled", gColorUrgencyScheduled,
+            gColorPrimary
+          )
+
+    # ── Field 10 & 11: Requestor Name and Date Submitted ─────────────────────
+
+    - f10_Lbl As label:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 680
+          Width: =220
+          Height: =18
+          Text: ="Requestor name *"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f11_Lbl As label:
+        Properties:
+          X: =gContentX + 48 + 240
+          Y: =gContentY + 680
+          Width: =200
+          Height: =18
+          Text: ="Date submitted"
+          Color: =gColorTextDark
+          Font: =gFontBase
+          Size: =13
+          FontWeight: =FontWeight.Semibold
+
+    - f10_TI As textInput:
+        Properties:
+          X: =gContentX + 48
+          Y: =gContentY + 700
+          Width: =228
+          Height: =36
+          Default: =User().FullName
+          HintText: ="Your full name"
+          Font: =gFontBase
+          Size: =14
+          Color: =gColorTextDark
+          BorderColor: =gColorBorder
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+
+    - f11_DateLbl As label:
+        Properties:
+          X: =gContentX + 48 + 240
+          Y: =gContentY + 700
+          Width: =228
+          Height: =36
+          Text: =Text(Now(), "[$-en-AU]d mmm yyyy h:mm AM/PM")
+          Color: =gColorTextMid
+          Font: =gFontBase
+          Size: =13
+          VerticalAlign: =VerticalAlign.Middle
+          PaddingLeft: =4
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # FOOTER ACTION BAR  — fixed at bottom of screen
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - footer_Bg As rectangle:
+        Properties:
+          X: =gContentX
+          Y: =App.Height - 64
+          Width: =App.Width - gContentX
+          Height: =64
+          Fill: =gColorWhite
+          BorderThickness: =0
+
+    - footer_TopLine As rectangle:
+        Properties:
+          X: =gContentX
+          Y: =App.Height - 64
+          Width: =App.Width - gContentX
+          Height: =1
+          Fill: =gColorBorder
+          BorderThickness: =0
+
+    # "Save as Draft" secondary button
+    - footer_DraftBtn As button:
+        Properties:
+          X: =gContentX + 32
+          Y: =App.Height - 52
+          Width: =160
+          Height: =40
+          Text: ="Save as Draft"
+          Color: =gColorPrimary
+          Fill: =gColorWhite
+          HoverFill: =RGBA(215, 187, 132, 0.2)
+          PressedFill: =RGBA(215, 187, 132, 0.4)
+          BorderThickness: =1
+          BorderColor: =gColorPrimary
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Semibold
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+          OnSelect: |-
+            =Patch(
+              VORRequests,
+              Defaults(VORRequests),
+              {
+                Title:                "VOR-" & Text(Max(VORRequests, Value(Mid(Title, 5, 4))) + 1, "0000"),
+                SubmittedOnBehalfOf:  {Value: f1_Radio.Selected.Value},
+                CustomerName:         If(f1_Radio.Selected.Value = "Customer", f2_TI.Text, ""),
+                IdentifierType:       {Value: f3_Radio.Selected.Value},
+                VehicleIdentifier:    f4_TI.Text,
+                FaultDescription:     f5_TI.Text,
+                PartName:             f6_TI.Text,
+                PartNumber:           f7_TI.Text,
+                Quantity:             If(IsNumeric(f8_TI.Text), Value(f8_TI.Text), 1),
+                Urgency:              {Value: f9_Radio.Selected.Value},
+                RequestorName:        f10_TI.Text,
+                DateSubmitted:        Now(),
+                CurrentStatus:        {Value: "Draft"},
+                StageNotes:           "[" & Text(Today(), "yyyy-mm-dd") & " " & Text(Hour(Now()), "00") & ":" & Text(Minute(Now()), "00") & "] " & User().FullName & ": Saved as draft"
+              }
+            );
+            Set(gNotificationMessage, "Draft saved.");
+            Set(gNotificationVisible, true);
+            Navigate(HomeScreen, ScreenTransition.Fade)
+
+    # "Submit" primary button
+    # On click: validate first; if invalid set gSubmitAttempted=true so error
+    # labels appear.  If valid: generate VOR ref, patch SharePoint, navigate home.
+    - footer_SubmitBtn As button:
+        Properties:
+          X: =gContentX + 208
+          Y: =App.Height - 52
+          Width: =160
+          Height: =40
+          Text: ="Submit"
+          Color: =gColorWhite
+          Fill: =gColorPrimary
+          HoverFill: =RGBA(36, 73, 130, 0.85)
+          PressedFill: =RGBA(26, 52, 94, 1)
+          DisabledFill: =RGBA(163, 163, 163, 1)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          FontWeight: =FontWeight.Semibold
+          RadiusTopLeft: =4
+          RadiusTopRight: =4
+          RadiusBottomLeft: =4
+          RadiusBottomRight: =4
+          OnSelect: |-
+            =If(
+              // ── client-side validation ──────────────────────────────────
+              IsBlank(f4_TI.Text) ||
+              IsBlank(f5_TI.Text) ||
+              IsBlank(f6_TI.Text) ||
+              Not(IsNumeric(f8_TI.Text)) ||
+              Value(f8_TI.Text) < 1 ||
+              (f1_Radio.Selected.Value = "Customer" && IsBlank(f2_TI.Text)),
+
+              // Validation failed — reveal inline error labels
+              Set(gSubmitAttempted, true),
+
+              // Validation passed — write to SharePoint
+              With(
+                {
+                  newVORNum: "VOR-" & Text(Max(VORRequests, Value(Mid(Title, 5, 4))) + 1, "0000"),
+                  stageEntry: "[" & Text(Today(), "yyyy-mm-dd") & " " &
+                              Text(Hour(Now()), "00") & ":" &
+                              Text(Minute(Now()), "00") & "] " &
+                              User().FullName & ": Submitted — VOR request created"
+                },
+                Patch(
+                  VORRequests,
+                  Defaults(VORRequests),
+                  {
+                    Title:                newVORNum,
+                    SubmittedOnBehalfOf:  {Value: f1_Radio.Selected.Value},
+                    CustomerName:         If(f1_Radio.Selected.Value = "Customer", f2_TI.Text, ""),
+                    IdentifierType:       {Value: f3_Radio.Selected.Value},
+                    VehicleIdentifier:    f4_TI.Text,
+                    FaultDescription:     f5_TI.Text,
+                    PartName:             f6_TI.Text,
+                    PartNumber:           f7_TI.Text,
+                    Quantity:             Value(f8_TI.Text),
+                    Urgency:              {Value: f9_Radio.Selected.Value},
+                    RequestorName:        f10_TI.Text,
+                    DateSubmitted:        Now(),
+                    CurrentStatus:        {Value: "Submitted"},
+                    StageNotes:           stageEntry
+                  }
+                )
+              );
+              Set(gNotificationMessage, "VOR request submitted successfully.");
+              Set(gNotificationVisible, true);
+              Set(gSubmitAttempted, false);
+              Navigate(HomeScreen, ScreenTransition.Fade)
+            )
+
+    # ── Cancel link ───────────────────────────────────────────────────────────
+    - footer_CancelBtn As button:
+        Properties:
+          X: =gContentX + 384
+          Y: =App.Height - 52
+          Width: =80
+          Height: =40
+          Text: ="Cancel"
+          Color: =gColorTextMid
+          Fill: =RGBA(255, 255, 255, 0)
+          HoverFill: =RGBA(200, 200, 200, 0.2)
+          PressedFill: =RGBA(200, 200, 200, 0.4)
+          BorderThickness: =0
+          Font: =gFontBase
+          Size: =14
+          OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)

@@ -1,0 +1,17 @@
+{
+  "DataSources": [
+    {
+      "Name": "VORRequests",
+      "Type": "SharePoint",
+      "IsWritable": true,
+      "ConnectionId": "shared_sharepointonline",
+      "ApiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "DatasetName": "https://bcisales.sharepoint.com/sites/REPLACE_WITH_YOUR_SITE_NAME",
+      "TableName": "VORRequests",
+      "Description": "VOR (Vehicle Off Road) parts request list. Replace DatasetName above with your actual SharePoint site URL before importing the app.",
+      "Paging": {
+        "PageSize": 500
+      }
+    }
+  ]
+}
