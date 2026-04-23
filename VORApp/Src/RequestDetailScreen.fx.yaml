@@ -1,7 +1,7 @@
 RequestDetailScreen As screen:
     Fill: =gColorSurface
 
-    hdr_Bg As rectangle:
+    rd_hdr_Bg As rectangle:
         X: =0
         Y: =0
         Width: =App.Width
@@ -9,7 +9,7 @@ RequestDetailScreen As screen:
         Fill: =gColorPrimary
         BorderThickness: =0
 
-    hdr_AppTitle As label:
+    rd_hdr_AppTitle As label:
         X: =16
         Y: =0
         Width: =280
@@ -21,7 +21,7 @@ RequestDetailScreen As screen:
         FontWeight: =FontWeight.Bold
         VerticalAlign: =VerticalAlign.Middle
 
-    hdr_BackBtn As button:
+    rd_hdr_BackBtn As button:
         X: =App.Width - 120
         Y: =14
         Width: =104
@@ -40,7 +40,7 @@ RequestDetailScreen As screen:
         RadiusBottomRight: =4
         OnSelect: =Back()
 
-    nav_Bg As rectangle:
+    rd_nav_Bg As rectangle:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -48,7 +48,7 @@ RequestDetailScreen As screen:
         Fill: =gColorPrimaryDark
         BorderThickness: =0
 
-    nav_HomeBtn As button:
+    rd_nav_HomeBtn As button:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -64,7 +64,7 @@ RequestDetailScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
 
-    nav_NewRequestBtn As button:
+    rd_nav_NewRequestBtn As button:
         X: =0
         Y: =gHeaderHeight + 48
         Width: =gNavWidth
@@ -80,7 +80,7 @@ RequestDetailScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
 
-    nav_MyQueueBtn As button:
+    rd_nav_MyQueueBtn As button:
         X: =0
         Y: =gHeaderHeight + 96
         Width: =gNavWidth
@@ -96,7 +96,7 @@ RequestDetailScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
 
-    nav_AllRequestsBtn As button:
+    rd_nav_AllRequestsBtn As button:
         X: =0
         Y: =gHeaderHeight + 144
         Width: =gNavWidth
@@ -112,7 +112,7 @@ RequestDetailScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    nav_ClosedBtn As button:
+    rd_nav_ClosedBtn As button:
         X: =0
         Y: =gHeaderHeight + 192
         Width: =gNavWidth
@@ -160,7 +160,7 @@ RequestDetailScreen As screen:
         Y: =gContentY + 32
         Width: =120
         Height: =28
-        Text: =If(IsBlank(gSelectedRequest), "—", gSelectedRequest.Title)
+        Text: =If(IsBlank(gSelectedRequest), "--", gSelectedRequest.Title)
         Color: =gColorWhite
         Font: =Font.OpenSansRegular
         Size: =14

@@ -1,7 +1,7 @@
 MyQueueScreen As screen:
     Fill: =gColorSurface
 
-    hdr_Bg As rectangle:
+    mq_hdr_Bg As rectangle:
         X: =0
         Y: =0
         Width: =App.Width
@@ -9,7 +9,7 @@ MyQueueScreen As screen:
         Fill: =gColorPrimary
         BorderThickness: =0
 
-    hdr_AppTitle As label:
+    mq_hdr_AppTitle As label:
         X: =16
         Y: =0
         Width: =280
@@ -21,7 +21,7 @@ MyQueueScreen As screen:
         FontWeight: =FontWeight.Bold
         VerticalAlign: =VerticalAlign.Middle
 
-    hdr_AvatarCircle As rectangle:
+    mq_hdr_AvatarCircle As rectangle:
         X: =App.Width - 200
         Y: =16
         Width: =32
@@ -33,7 +33,7 @@ MyQueueScreen As screen:
         RadiusBottomLeft: =16
         RadiusBottomRight: =16
 
-    hdr_AvatarInitial As label:
+    mq_hdr_AvatarInitial As label:
         X: =App.Width - 200
         Y: =16
         Width: =32
@@ -46,7 +46,7 @@ MyQueueScreen As screen:
         Align: =Align.Center
         VerticalAlign: =VerticalAlign.Middle
 
-    hdr_UserName As label:
+    mq_hdr_UserName As label:
         X: =App.Width - 360
         Y: =0
         Width: =152
@@ -58,7 +58,7 @@ MyQueueScreen As screen:
         VerticalAlign: =VerticalAlign.Middle
         Align: =Align.Right
 
-    nav_Bg As rectangle:
+    mq_nav_Bg As rectangle:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -66,14 +66,14 @@ MyQueueScreen As screen:
         Fill: =gColorPrimaryDark
         BorderThickness: =0
 
-    nav_MyQueueActiveBar As rectangle:
+    mq_nav_MyQueueActiveBar As rectangle:
         X: =0
         Y: =gHeaderHeight + 96
         Width: =4
         Height: =48
         Fill: =gColorGold
 
-    nav_HomeBtn As button:
+    mq_nav_HomeBtn As button:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -89,7 +89,7 @@ MyQueueScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
 
-    nav_NewRequestBtn As button:
+    mq_nav_NewRequestBtn As button:
         X: =0
         Y: =gHeaderHeight + 48
         Width: =gNavWidth
@@ -105,7 +105,7 @@ MyQueueScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
 
-    nav_MyQueueBtn As button:
+    mq_nav_MyQueueBtn As button:
         X: =0
         Y: =gHeaderHeight + 96
         Width: =gNavWidth
@@ -122,7 +122,7 @@ MyQueueScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(MyQueueScreen, ScreenTransition.None)
 
-    nav_AllRequestsBtn As button:
+    mq_nav_AllRequestsBtn As button:
         X: =0
         Y: =gHeaderHeight + 144
         Width: =gNavWidth
@@ -138,7 +138,7 @@ MyQueueScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    nav_ClosedBtn As button:
+    mq_nav_ClosedBtn As button:
         X: =0
         Y: =gHeaderHeight + 192
         Width: =gNavWidth

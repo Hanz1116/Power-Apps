@@ -1,7 +1,7 @@
 HomeScreen As screen:
     Fill: =gColorSurface
 
-    hdr_Bg As rectangle:
+    hs_hdr_Bg As rectangle:
         X: =0
         Y: =0
         Width: =App.Width
@@ -9,7 +9,7 @@ HomeScreen As screen:
         Fill: =gColorPrimary
         BorderThickness: =0
 
-    hdr_AppTitle As label:
+    hs_hdr_AppTitle As label:
         X: =16
         Y: =0
         Width: =280
@@ -21,7 +21,7 @@ HomeScreen As screen:
         FontWeight: =FontWeight.Bold
         VerticalAlign: =VerticalAlign.Middle
 
-    hdr_AvatarCircle As rectangle:
+    hs_hdr_AvatarCircle As rectangle:
         X: =App.Width - 200
         Y: =16
         Width: =32
@@ -33,7 +33,7 @@ HomeScreen As screen:
         RadiusBottomLeft: =16
         RadiusBottomRight: =16
 
-    hdr_AvatarInitial As label:
+    hs_hdr_AvatarInitial As label:
         X: =App.Width - 200
         Y: =16
         Width: =32
@@ -46,7 +46,7 @@ HomeScreen As screen:
         Align: =Align.Center
         VerticalAlign: =VerticalAlign.Middle
 
-    hdr_UserName As label:
+    hs_hdr_UserName As label:
         X: =App.Width - 360
         Y: =0
         Width: =152
@@ -58,7 +58,7 @@ HomeScreen As screen:
         VerticalAlign: =VerticalAlign.Middle
         Align: =Align.Right
 
-    hdr_NewRequestBtn As button:
+    hs_hdr_NewRequestBtn As button:
         X: =App.Width - 200
         Y: =14
         Width: =164
@@ -78,7 +78,7 @@ HomeScreen As screen:
         RadiusBottomRight: =4
         OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
 
-    nav_Bg As rectangle:
+    hs_nav_Bg As rectangle:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -86,14 +86,14 @@ HomeScreen As screen:
         Fill: =gColorPrimaryDark
         BorderThickness: =0
 
-    nav_HomeActiveMark As rectangle:
+    hs_nav_HomeActiveMark As rectangle:
         X: =0
         Y: =gHeaderHeight
         Width: =4
         Height: =48
         Fill: =gColorGold
 
-    nav_HomeBtn As button:
+    hs_nav_HomeBtn As button:
         X: =0
         Y: =gHeaderHeight
         Width: =gNavWidth
@@ -102,7 +102,6 @@ HomeScreen As screen:
         Color: =gColorWhite
         Fill: =RGBA(255, 255, 255, 0.12)
         HoverFill: =RGBA(255, 255, 255, 0.18)
-        PressedFill: =RGBA(255, 255, 255, 0.08)
         BorderThickness: =0
         Font: =Font.OpenSansRegular
         Size: =14
@@ -111,7 +110,7 @@ HomeScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(HomeScreen, ScreenTransition.None)
 
-    nav_NewRequestBtn As button:
+    hs_nav_NewRequestBtn As button:
         X: =0
         Y: =gHeaderHeight + 48
         Width: =gNavWidth
@@ -127,7 +126,7 @@ HomeScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
 
-    nav_MyQueueBtn As button:
+    hs_nav_MyQueueBtn As button:
         X: =0
         Y: =gHeaderHeight + 96
         Width: =gNavWidth
@@ -143,7 +142,7 @@ HomeScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
 
-    nav_AllRequestsBtn As button:
+    hs_nav_AllRequestsBtn As button:
         X: =0
         Y: =gHeaderHeight + 144
         Width: =gNavWidth
@@ -159,7 +158,7 @@ HomeScreen As screen:
         PaddingLeft: =20
         OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    nav_ClosedBtn As button:
+    hs_nav_ClosedBtn As button:
         X: =0
         Y: =gHeaderHeight + 192
         Width: =gNavWidth
@@ -177,7 +176,7 @@ HomeScreen As screen:
             =Set(gClosedStatusFilter, true);
             Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    filter_Bg As rectangle:
+    hs_filter_Bg As rectangle:
         X: =gContentX
         Y: =gContentY
         Width: =App.Width - gContentX
@@ -185,7 +184,7 @@ HomeScreen As screen:
         Fill: =gColorWhite
         BorderThickness: =0
 
-    filter_BottomLine As rectangle:
+    hs_filter_BottomLine As rectangle:
         X: =gContentX
         Y: =gContentY + 55
         Width: =App.Width - gContentX
@@ -193,7 +192,7 @@ HomeScreen As screen:
         Fill: =gColorBorder
         BorderThickness: =0
 
-    filter_StatusLbl As label:
+    hs_filter_StatusLbl As label:
         X: =gContentX + 16
         Y: =gContentY + 8
         Width: =60
@@ -203,7 +202,7 @@ HomeScreen As screen:
         Font: =Font.OpenSansRegular
         Size: =11
 
-    filter_StatusDD As dropDown:
+    hs_filter_StatusDD As dropDown:
         X: =gContentX + 16
         Y: =gContentY + 26
         Width: =160
@@ -219,7 +218,7 @@ HomeScreen As screen:
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
 
-    filter_UrgencyLbl As label:
+    hs_filter_UrgencyLbl As label:
         X: =gContentX + 196
         Y: =gContentY + 8
         Width: =60
@@ -229,7 +228,7 @@ HomeScreen As screen:
         Font: =Font.OpenSansRegular
         Size: =11
 
-    filter_UrgencyDD As dropDown:
+    hs_filter_UrgencyDD As dropDown:
         X: =gContentX + 196
         Y: =gContentY + 26
         Width: =152
@@ -245,7 +244,7 @@ HomeScreen As screen:
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
 
-    filter_SearchLbl As label:
+    hs_filter_SearchLbl As label:
         X: =gContentX + 368
         Y: =gContentY + 8
         Width: =60
@@ -255,7 +254,7 @@ HomeScreen As screen:
         Font: =Font.OpenSansRegular
         Size: =11
 
-    filter_SearchTI As textInput:
+    hs_filter_SearchTI As textInput:
         X: =gContentX + 368
         Y: =gContentY + 26
         Width: =App.Width - gContentX - 384
@@ -286,15 +285,15 @@ HomeScreen As screen:
                     VORRequests,
                     CurrentStatus.Value <> "Closed" &&
                     CurrentStatus.Value <> "Rejected" &&
-                    (filter_StatusDD.Selected.Value = "All" ||
-                      CurrentStatus.Value = filter_StatusDD.Selected.Value) &&
-                    (filter_UrgencyDD.Selected.Value = "All" ||
-                      Urgency.Value = filter_UrgencyDD.Selected.Value) &&
-                    (IsBlank(filter_SearchTI.Text) ||
-                      filter_SearchTI.Text in Title ||
-                      filter_SearchTI.Text in VehicleIdentifier ||
-                      filter_SearchTI.Text in CustomerName ||
-                      filter_SearchTI.Text in PartName)
+                    (hs_filter_StatusDD.Selected.Value = "All" ||
+                      CurrentStatus.Value = hs_filter_StatusDD.Selected.Value) &&
+                    (hs_filter_UrgencyDD.Selected.Value = "All" ||
+                      Urgency.Value = hs_filter_UrgencyDD.Selected.Value) &&
+                    (IsBlank(hs_filter_SearchTI.Text) ||
+                      hs_filter_SearchTI.Text in Title ||
+                      hs_filter_SearchTI.Text in VehicleIdentifier ||
+                      hs_filter_SearchTI.Text in CustomerName ||
+                      hs_filter_SearchTI.Text in PartName)
                   ),
                   "UrgencyOrder",
                   Switch(
