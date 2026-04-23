@@ -1,6 +1,24 @@
 {
   "FormatVersion": "0.24",
   "SaveFormat": "BackwardsCompatible",
-  "MSAppStructureVersion": "1.0.0",
-  "AppPreviewFlagsKey": []
+  "Header": {
+    "DocVersion": "1.349",
+    "MinVersionToLoad": "1.349",
+    "MSAppStructureVersion": "2.4.0"
+  },
+  "Properties": {
+    "AppPreviewFlagsMap": {}
+  },
+  "PublishInfo": {
+    "Description": "",
+    "AppIcon": "",
+    "BackgroundColor": "#FFFFFF"
+  },
+  "ScreenOrder": [
+    "HomeScreen",
+    "NewRequestScreen",
+    "RequestDetailScreen",
+    "MyQueueScreen",
+    "AllRequestsScreen"
+  ]
 }

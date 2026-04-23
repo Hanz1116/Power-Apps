@@ -1,51 +1,45 @@
-App As app:
-  Properties:
-    # Named formulas — design tokens and layout constants shared across all screens.
-    # These are evaluated lazily and do not block app load.
-    Formulas: |
-      // Layout
-      gNavWidth       = 200;
-      gHeaderHeight   = 64;
-      gContentX       = 200;
-      gContentY       = 64;
-
-      // BCI brand palette
-      gColorPrimary       = RGBA(36,  73,  130, 1);   // #244982  deep blue
-      gColorPrimaryDark   = RGBA(26,  52,  94,  1);   // nav rail, slightly darker
-      gColorSurface       = RGBA(244, 244, 244, 1);   // #f4f4f4  page background
-      gColorGold          = RGBA(163, 128, 57,  1);   // #a38039  brand gold
-      gColorGoldLight     = RGBA(215, 187, 132, 1);   // #d7bb84  pale gold / hover
-      gColorWhite         = RGBA(255, 255, 255, 1);
-      gColorTextDark      = RGBA(32,  31,  30,  1);
-      gColorTextMid       = RGBA(96,  94,  92,  1);
-      gColorBorder        = RGBA(200, 198, 196, 1);
-      gColorError         = RGBA(164, 38,  44,  1);
-
-      // Urgency colours — semantic, not brand-washed
-      gColorUrgencySafety      = RGBA(163, 45,  45,  1);   // #A32D2D  red
-      gColorUrgencyOperational = RGBA(133, 79,  11,  1);   // #854F0B  amber
-      gColorUrgencyScheduled   = RGBA(95,  94,  90,  1);   // #5F5E5A  grey
-
-      // Status badge colours (tints of primary blue for in-progress; gold for review; green for done; red for rejected)
-      gColorStatusDraft          = RGBA(130, 130, 130, 1);
-      gColorStatusSubmitted      = RGBA(36,  73,  130, 1);
-      gColorStatusValidation     = RGBA(36,  73,  130, 1);
-      gColorStatusOrderer        = RGBA(163, 128, 57,  1);
-      gColorStatusOrdered        = RGBA(163, 128, 57,  1);
-      gColorStatusReceived       = RGBA(16,  110, 58,  1);
-      gColorStatusDispatched     = RGBA(16,  110, 58,  1);
-      gColorStatusClosed         = RGBA(16,  110, 58,  1);
-      gColorStatusRejected       = RGBA(163, 45,  45,  1);
-
-      // Typography
-      gFontBase = "Segoe UI";
-
-      // Choice-field helpers used in multiple screens
-      gStatusChoices  = ["All","Draft","Submitted","Validation","Orderer processing","Parts ordered","Parts received","Dispatched","Closed","Rejected"];
-      gUrgencyChoices = ["All","Safety critical","Operational","Scheduled"]
-
+App As appinfo:
+    BackEnabled: =true
+    Theme: =PowerAppsTheme
     OnStart: |-
-      =Set(gSubmitAttempted, false);
-      Set(gNotificationVisible, false);
-      Set(gNotificationMessage, "");
-      Set(gSelectedRequest, Blank())
+        =Set(gColorPrimary, RGBA(36,73,130,1));
+        Set(gColorPrimaryDark, RGBA(26,52,94,1));
+        Set(gColorSurface, RGBA(244,244,244,1));
+        Set(gColorGold, RGBA(163,128,57,1));
+        Set(gColorGoldLight, RGBA(215,187,132,1));
+        Set(gColorWhite, RGBA(255,255,255,1));
+        Set(gColorTextDark, RGBA(32,31,30,1));
+        Set(gColorTextMid, RGBA(96,94,92,1));
+        Set(gColorBorder, RGBA(200,198,196,1));
+        Set(gColorError, RGBA(164,38,44,1));
+        Set(gColorUrgencySafety, RGBA(163,45,45,1));
+        Set(gColorUrgencyOperational, RGBA(133,79,11,1));
+        Set(gColorUrgencyScheduled, RGBA(95,94,90,1));
+        Set(gColorStatusDraft, RGBA(150,150,150,1));
+        Set(gColorStatusSubmitted, RGBA(0,120,212,1));
+        Set(gColorStatusValidation, RGBA(0,90,158,1));
+        Set(gColorStatusOrderer, RGBA(133,79,11,1));
+        Set(gColorStatusOrdered, RGBA(0,150,130,1));
+        Set(gColorStatusReceived, RGBA(16,110,58,1));
+        Set(gColorStatusDispatched, RGBA(36,73,130,1));
+        Set(gColorStatusClosed, RGBA(80,80,80,1));
+        Set(gColorStatusRejected, RGBA(164,38,44,1));
+        Set(gNavWidth, 200);
+        Set(gHeaderHeight, 64);
+        Set(gContentX, 200);
+        Set(gContentY, 64);
+        Set(gFontBase, Font.OpenSansRegular);
+        Set(gSubmitAttempted, false);
+        Set(gNotificationVisible, false);
+        Set(gNotificationMessage, "");
+        Set(gSelectedRequest, Blank());
+        Set(gClosedStatusFilter, false);
+        Set(gStatusChoices, ["All","Draft","Submitted","Validation","Orderer processing","Parts ordered","Parts received","Dispatched","Closed","Rejected"]);
+        Set(gUrgencyChoices, ["All","Safety critical","Operational","Scheduled"])
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
