@@ -271,7 +271,8 @@ NewRequestScreen As screen:
         Y: =gContentY + 272
         Width: =240
         Height: =32
-        Items: =["VIN", "Stock#"]
+        Items: |-
+            =["VIN", "Stock#"]
         Default: ="VIN"
         Layout: =Layout.Horizontal
         Font: =Font.OpenSansRegular
@@ -283,7 +284,8 @@ NewRequestScreen As screen:
         Y: =gContentY + 316
         Width: =300
         Height: =18
-        Text: =If(f3_Radio.Selected.Value = "VIN", "VIN *", "Stock# *")
+        Text: |-
+            =If(f3_Radio.Selected.Value = "VIN", "VIN *", "Stock# *")
         Color: =If(gSubmitAttempted && IsBlank(f4_TI.Text), gColorError, gColorTextDark)
         Font: =Font.OpenSansRegular
         Size: =13
@@ -294,7 +296,8 @@ NewRequestScreen As screen:
         Y: =gContentY + 336
         Width: =Min(App.Width - gContentX - 64, 720) - 32
         Height: =36
-        HintText: =If(f3_Radio.Selected.Value = "VIN", "Enter full VIN (17 characters)", "Enter Stock# (e.g. BCI-1234)")
+        HintText: |-
+            =If(f3_Radio.Selected.Value = "VIN", "Enter full VIN (17 characters)", "Enter Stock# (e.g. BCI-1234)")
         Font: =Font.OpenSansRegular
         Size: =14
         Color: =gColorTextDark
@@ -309,7 +312,8 @@ NewRequestScreen As screen:
         Y: =gContentY + 374
         Width: =300
         Height: =16
-        Text: =If(f3_Radio.Selected.Value = "VIN", "VIN is required", "Stock# is required")
+        Text: |-
+            =If(f3_Radio.Selected.Value = "VIN", "VIN is required", "Stock# is required")
         Color: =gColorError
         Font: =Font.OpenSansRegular
         Size: =11
