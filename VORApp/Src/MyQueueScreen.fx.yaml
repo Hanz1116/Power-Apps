@@ -201,6 +201,7 @@ MyQueueScreen As screen:
         Width: =App.Width - gContentX
         Height: =App.Height - gContentY - 56
         TemplateSize: =80
+        TemplateFill: =RGBA(0, 0, 0, 0)
         TemplatePadding: =0
         ShowScrollbar: =true
         Items: |-
