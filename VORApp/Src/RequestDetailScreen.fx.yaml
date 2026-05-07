@@ -1,177 +1,370 @@
-Screens:
-  RequestDetailScreen As screen:
-    Properties:
-      Fill: =gColorSurface
-      # PASS 2 — Read-only detail view
-      # PASS 3 — Contextual action panel (reviewer sign-off, orderer PO, dispatch, close, resubmit)
+RequestDetailScreen As screen:
+    Fill: =gColorSurface
 
-    Children:
+    rd_hdr_Bg As rectangle:
+        X: =0
+        Y: =0
+        Width: =App.Width
+        Height: =gHeaderHeight
+        Fill: =gColorPrimary
+        BorderThickness: =0
 
-    # ── Header ────────────────────────────────────────────────────────────────
-    - hdr_Bg As rectangle:
-        Properties:
-          X: =0
-          Y: =0
-          Width: =App.Width
-          Height: =gHeaderHeight
-          Fill: =gColorPrimary
-          BorderThickness: =0
+    rd_hdr_AppTitle As label:
+        X: =16
+        Y: =0
+        Width: =280
+        Height: =gHeaderHeight
+        Text: ="VOR Requests"
+        Color: =gColorWhite
+        Font: =Font.OpenSansRegular
+        Size: =20
+        FontWeight: =FontWeight.Bold
+        VerticalAlign: =VerticalAlign.Middle
 
-    - hdr_AppTitle As label:
-        Properties:
-          X: =16
-          Y: =0
-          Width: =280
-          Height: =gHeaderHeight
-          Text: ="VOR Requests"
-          Color: =gColorWhite
-          Font: =gFontBase
-          Size: =20
-          FontWeight: =FontWeight.Bold
-          VerticalAlign: =VerticalAlign.Middle
+    rd_hdr_BackBtn As button:
+        X: =App.Width - 120
+        Y: =14
+        Width: =104
+        Height: =36
+        Text: ="< Back"
+        Color: =gColorWhite
+        Fill: =RGBA(255, 255, 255, 0.2)
+        HoverFill: =RGBA(255, 255, 255, 0.3)
+        BorderThickness: =1
+        BorderColor: =RGBA(255, 255, 255, 0.5)
+        Font: =Font.OpenSansRegular
+        Size: =13
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        OnSelect: =Back()
 
-    - hdr_BackBtn As button:
-        Properties:
-          X: =App.Width - 120
-          Y: =14
-          Width: =104
-          Height: =36
-          Text: ="← Back"
-          Color: =gColorWhite
-          Fill: =RGBA(255, 255, 255, 0.2)
-          HoverFill: =RGBA(255, 255, 255, 0.3)
-          PressedFill: =RGBA(255, 255, 255, 0.1)
-          BorderThickness: =1
-          BorderColor: =RGBA(255, 255, 255, 0.5)
-          Font: =gFontBase
-          Size: =13
-          RadiusTopLeft: =4
-          RadiusTopRight: =4
-          RadiusBottomLeft: =4
-          RadiusBottomRight: =4
-          OnSelect: =Back()
+    rd_nav_Bg As rectangle:
+        X: =0
+        Y: =gHeaderHeight
+        Width: =gNavWidth
+        Height: =App.Height - gHeaderHeight
+        Fill: =gColorPrimaryDark
+        BorderThickness: =0
 
-    # ── Nav Rail ──────────────────────────────────────────────────────────────
-    - nav_Bg As rectangle:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight
-          Width: =gNavWidth
-          Height: =App.Height - gHeaderHeight
-          Fill: =gColorPrimaryDark
-          BorderThickness: =0
+    rd_nav_HomeBtn As button:
+        X: =0
+        Y: =gHeaderHeight
+        Width: =gNavWidth
+        Height: =48
+        Text: ="  Home"
+        Color: =RGBA(200, 215, 235, 1)
+        Fill: =RGBA(255, 255, 255, 0)
+        HoverFill: =RGBA(255, 255, 255, 0.1)
+        BorderThickness: =0
+        Font: =Font.OpenSansRegular
+        Size: =14
+        Align: =Align.Left
+        PaddingLeft: =20
+        OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
 
-    - nav_HomeBtn As button:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight
-          Width: =gNavWidth
-          Height: =48
-          Text: ="  Home"
-          Color: =RGBA(200, 215, 235, 1)
-          Fill: =RGBA(255, 255, 255, 0)
-          HoverFill: =RGBA(255, 255, 255, 0.1)
-          PressedFill: =RGBA(255, 255, 255, 0.05)
-          BorderThickness: =0
-          Font: =gFontBase
-          Size: =14
-          Align: =Align.Left
-          PaddingLeft: =20
-          OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+    rd_nav_NewRequestBtn As button:
+        X: =0
+        Y: =gHeaderHeight + 48
+        Width: =gNavWidth
+        Height: =48
+        Text: ="  New Request"
+        Color: =RGBA(200, 215, 235, 1)
+        Fill: =RGBA(255, 255, 255, 0)
+        HoverFill: =RGBA(255, 255, 255, 0.1)
+        BorderThickness: =0
+        Font: =Font.OpenSansRegular
+        Size: =14
+        Align: =Align.Left
+        PaddingLeft: =20
+        OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
 
-    - nav_NewRequestBtn As button:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight + 48
-          Width: =gNavWidth
-          Height: =48
-          Text: ="  New Request"
-          Color: =RGBA(200, 215, 235, 1)
-          Fill: =RGBA(255, 255, 255, 0)
-          HoverFill: =RGBA(255, 255, 255, 0.1)
-          PressedFill: =RGBA(255, 255, 255, 0.05)
-          BorderThickness: =0
-          Font: =gFontBase
-          Size: =14
-          Align: =Align.Left
-          PaddingLeft: =20
-          OnSelect: =Navigate(NewRequestScreen, ScreenTransition.Fade)
+    rd_nav_MyQueueBtn As button:
+        X: =0
+        Y: =gHeaderHeight + 96
+        Width: =gNavWidth
+        Height: =48
+        Text: ="  My Queue"
+        Color: =RGBA(200, 215, 235, 1)
+        Fill: =RGBA(255, 255, 255, 0)
+        HoverFill: =RGBA(255, 255, 255, 0.1)
+        BorderThickness: =0
+        Font: =Font.OpenSansRegular
+        Size: =14
+        Align: =Align.Left
+        PaddingLeft: =20
+        OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
 
-    - nav_MyQueueBtn As button:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight + 96
-          Width: =gNavWidth
-          Height: =48
-          Text: ="  My Queue"
-          Color: =RGBA(200, 215, 235, 1)
-          Fill: =RGBA(255, 255, 255, 0)
-          HoverFill: =RGBA(255, 255, 255, 0.1)
-          PressedFill: =RGBA(255, 255, 255, 0.05)
-          BorderThickness: =0
-          Font: =gFontBase
-          Size: =14
-          Align: =Align.Left
-          PaddingLeft: =20
-          OnSelect: =Navigate(MyQueueScreen, ScreenTransition.Fade)
+    rd_nav_AllRequestsBtn As button:
+        X: =0
+        Y: =gHeaderHeight + 144
+        Width: =gNavWidth
+        Height: =48
+        Text: ="  All Requests"
+        Color: =RGBA(200, 215, 235, 1)
+        Fill: =RGBA(255, 255, 255, 0)
+        HoverFill: =RGBA(255, 255, 255, 0.1)
+        BorderThickness: =0
+        Font: =Font.OpenSansRegular
+        Size: =14
+        Align: =Align.Left
+        PaddingLeft: =20
+        OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    - nav_AllRequestsBtn As button:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight + 144
-          Width: =gNavWidth
-          Height: =48
-          Text: ="  All Requests"
-          Color: =RGBA(200, 215, 235, 1)
-          Fill: =RGBA(255, 255, 255, 0)
-          HoverFill: =RGBA(255, 255, 255, 0.1)
-          PressedFill: =RGBA(255, 255, 255, 0.05)
-          BorderThickness: =0
-          Font: =gFontBase
-          Size: =14
-          Align: =Align.Left
-          PaddingLeft: =20
-          OnSelect: =Navigate(AllRequestsScreen, ScreenTransition.Fade)
-
-    - nav_ClosedBtn As button:
-        Properties:
-          X: =0
-          Y: =gHeaderHeight + 192
-          Width: =gNavWidth
-          Height: =48
-          Text: ="  Closed"
-          Color: =RGBA(200, 215, 235, 1)
-          Fill: =RGBA(255, 255, 255, 0)
-          HoverFill: =RGBA(255, 255, 255, 0.1)
-          PressedFill: =RGBA(255, 255, 255, 0.05)
-          BorderThickness: =0
-          Font: =gFontBase
-          Size: =14
-          Align: =Align.Left
-          PaddingLeft: =20
-          OnSelect: |-
+    rd_nav_ClosedBtn As button:
+        X: =0
+        Y: =gHeaderHeight + 192
+        Width: =gNavWidth
+        Height: =48
+        Text: ="  Closed"
+        Color: =RGBA(200, 215, 235, 1)
+        Fill: =RGBA(255, 255, 255, 0)
+        HoverFill: =RGBA(255, 255, 255, 0.1)
+        BorderThickness: =0
+        Font: =Font.OpenSansRegular
+        Size: =14
+        Align: =Align.Left
+        PaddingLeft: =20
+        OnSelect: |-
             =Set(gClosedStatusFilter, true);
             Navigate(AllRequestsScreen, ScreenTransition.Fade)
 
-    # ── Placeholder content (Pass 2 will replace this) ───────────────────────
-    - placeholder_Lbl As label:
-        Properties:
-          X: =gContentX + 32
-          Y: =gContentY + 40
-          Width: =600
-          Height: =40
-          Text: ="Request Detail — coming in Pass 2"
-          Color: =gColorTextMid
-          Font: =gFontBase
-          Size: =16
+    detail_CardBg As rectangle:
+        X: =gContentX + 32
+        Y: =gContentY + 16
+        Width: =Min(App.Width - gContentX - 64, 800)
+        Height: =App.Height - gContentY - 32
+        Fill: =gColorWhite
+        RadiusTopLeft: =8
+        RadiusTopRight: =8
+        RadiusBottomLeft: =8
+        RadiusBottomRight: =8
+        BorderThickness: =1
+        BorderColor: =gColorBorder
 
-    - placeholder_SubLbl As label:
-        Properties:
-          X: =gContentX + 32
-          Y: =gContentY + 88
-          Width: =600
-          Height: =24
-          Text: ="Selected request: " & If(IsBlank(gSelectedRequest), "none", gSelectedRequest.Title)
-          Color: =gColorTextMid
-          Font: =gFontBase
-          Size: =14
+    detail_VORRefBg As rectangle:
+        X: =gContentX + 48
+        Y: =gContentY + 32
+        Width: =120
+        Height: =28
+        Fill: =gColorGold
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        BorderThickness: =0
+
+    detail_VORRefLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 32
+        Width: =120
+        Height: =28
+        Text: =If(IsBlank(gSelectedRequest), "--", gSelectedRequest.Title)
+        Color: =gColorWhite
+        Font: =Font.OpenSansRegular
+        Size: =14
+        FontWeight: =FontWeight.Bold
+        Align: =Align.Center
+        VerticalAlign: =VerticalAlign.Middle
+
+    detail_UrgencyBadgeBg As rectangle:
+        X: =gContentX + 184
+        Y: =gContentY + 32
+        Width: =120
+        Height: =28
+        Fill: =If(IsBlank(gSelectedRequest), gColorBorder, Switch(gSelectedRequest.Urgency.Value, "Safety critical", gColorUrgencySafety, "Operational", gColorUrgencyOperational, "Scheduled", gColorUrgencyScheduled, gColorBorder))
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        BorderThickness: =0
+
+    detail_UrgencyBadgeLbl As label:
+        X: =gContentX + 184
+        Y: =gContentY + 32
+        Width: =120
+        Height: =28
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.Urgency.Value)
+        Color: =gColorWhite
+        Font: =Font.OpenSansRegular
+        Size: =12
+        FontWeight: =FontWeight.Semibold
+        Align: =Align.Center
+        VerticalAlign: =VerticalAlign.Middle
+
+    detail_StatusBadgeBg As rectangle:
+        X: =gContentX + 320
+        Y: =gContentY + 32
+        Width: =148
+        Height: =28
+        Fill: =If(IsBlank(gSelectedRequest), gColorBorder, Switch(gSelectedRequest.CurrentStatus.Value, "Draft", gColorStatusDraft, "Submitted", gColorStatusSubmitted, "Validation", gColorStatusValidation, "Orderer processing", gColorStatusOrderer, "Parts ordered", gColorStatusOrdered, "Parts received", gColorStatusReceived, "Dispatched", gColorStatusDispatched, "Closed", gColorStatusClosed, "Rejected", gColorStatusRejected, gColorBorder))
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        BorderThickness: =0
+
+    detail_StatusBadgeLbl As label:
+        X: =gContentX + 320
+        Y: =gContentY + 32
+        Width: =148
+        Height: =28
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.CurrentStatus.Value)
+        Color: =gColorWhite
+        Font: =Font.OpenSansRegular
+        Size: =12
+        FontWeight: =FontWeight.Semibold
+        Align: =Align.Center
+        VerticalAlign: =VerticalAlign.Middle
+
+    detail_Divider As rectangle:
+        X: =gContentX + 48
+        Y: =gContentY + 76
+        Width: =Min(App.Width - gContentX - 64, 800) - 32
+        Height: =1
+        Fill: =gColorBorder
+        BorderThickness: =0
+
+    detail_VehicleLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 92
+        Width: =160
+        Height: =16
+        Text: ="Vehicle"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_VehicleVal As label:
+        X: =gContentX + 48
+        Y: =gContentY + 110
+        Width: =300
+        Height: =22
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.IdentifierType.Value & ": " & gSelectedRequest.VehicleIdentifier)
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =15
+        FontWeight: =FontWeight.Semibold
+
+    detail_SubmittedByLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 144
+        Width: =160
+        Height: =16
+        Text: ="Submitted by"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_SubmittedByVal As label:
+        X: =gContentX + 48
+        Y: =gContentY + 162
+        Width: =300
+        Height: =20
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.RequestorName & If(gSelectedRequest.SubmittedOnBehalfOf.Value = "Customer", " (on behalf of: " & gSelectedRequest.CustomerName & ")", ""))
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =13
+
+    detail_DateSubmittedLbl As label:
+        X: =gContentX + 360
+        Y: =gContentY + 144
+        Width: =160
+        Height: =16
+        Text: ="Date submitted"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_DateSubmittedVal As label:
+        X: =gContentX + 360
+        Y: =gContentY + 162
+        Width: =200
+        Height: =20
+        Text: =If(IsBlank(gSelectedRequest) || IsBlank(gSelectedRequest.DateSubmitted), "--", Text(gSelectedRequest.DateSubmitted, "[$-en-AU]d mmm yyyy"))
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =13
+
+    detail_FaultLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 196
+        Width: =200
+        Height: =16
+        Text: ="Fault description"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_FaultVal As label:
+        X: =gContentX + 48
+        Y: =gContentY + 214
+        Width: =Min(App.Width - gContentX - 64, 800) - 32
+        Height: =60
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.FaultDescription)
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =13
+
+    detail_PartLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 284
+        Width: =160
+        Height: =16
+        Text: ="Part"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_PartVal As label:
+        X: =gContentX + 48
+        Y: =gContentY + 302
+        Width: =300
+        Height: =20
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.PartName & If(IsBlank(gSelectedRequest.PartNumber), "", " (" & gSelectedRequest.PartNumber & ")"))
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =13
+        FontWeight: =FontWeight.Semibold
+
+    detail_QtyLbl As label:
+        X: =gContentX + 360
+        Y: =gContentY + 284
+        Width: =120
+        Height: =16
+        Text: ="Quantity"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_QtyVal As label:
+        X: =gContentX + 360
+        Y: =gContentY + 302
+        Width: =120
+        Height: =20
+        Text: =If(IsBlank(gSelectedRequest), "--", Text(gSelectedRequest.Quantity))
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =13
+        FontWeight: =FontWeight.Semibold
+
+    detail_StageNotesLbl As label:
+        X: =gContentX + 48
+        Y: =gContentY + 336
+        Width: =200
+        Height: =16
+        Text: ="Stage notes"
+        Color: =gColorTextMid
+        Font: =Font.OpenSansRegular
+        Size: =11
+
+    detail_StageNotesVal As label:
+        X: =gContentX + 48
+        Y: =gContentY + 354
+        Width: =Min(App.Width - gContentX - 64, 800) - 32
+        Height: =120
+        Text: =If(IsBlank(gSelectedRequest), "", gSelectedRequest.StageNotes)
+        Color: =gColorTextDark
+        Font: =Font.OpenSansRegular
+        Size: =12

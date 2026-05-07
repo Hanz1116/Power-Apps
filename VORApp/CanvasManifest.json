@@ -1,11 +1,24 @@
 {
-  "FormatVersion": "1.0",
+  "FormatVersion": "0.24",
   "SaveFormat": "BackwardsCompatible",
-  "MSAppStructureVersion": "1.0.0",
-  "AppPreviewFlagsKey": [
-    "ExperimentalFormulas"
-  ],
-  "AppName": "VOR Requests",
-  "DocumentType": "App",
-  "ExtensionVersion": "2.2"
+  "Header": {
+    "DocVersion": "1.349",
+    "MinVersionToLoad": "1.349",
+    "MSAppStructureVersion": "2.4.0"
+  },
+  "Properties": {
+    "AppPreviewFlagsMap": {}
+  },
+  "PublishInfo": {
+    "Description": "",
+    "AppIcon": "",
+    "BackgroundColor": "#FFFFFF"
+  },
+  "ScreenOrder": [
+    "HomeScreen",
+    "NewRequestScreen",
+    "RequestDetailScreen",
+    "MyQueueScreen",
+    "AllRequestsScreen"
+  ]
 }

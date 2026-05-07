@@ -25,7 +25,11 @@ $ErrorActionPreference = "Stop"
 $listTitle = "VORRequests"
 
 Write-Host "Connecting to $SiteUrl ..." -ForegroundColor Cyan
-Connect-PnPOnline -Url $SiteUrl -Interactive
+# PnP.PowerShell 2.x requires an Entra app client ID with -Interactive.
+# 31359c7f... is the well-known PnP Management Shell app registration.
+# Run  Register-PnPManagementShellAccess  once (as a tenant admin) to consent
+# to that app in your tenant before running this script.
+Connect-PnPOnline -Url $SiteUrl -Interactive -ClientId "31359c7f-bd7e-475c-86db-fdb8c937548e"
 
 # ── Helper functions ─────────────────────────────────────────────────────────
 
